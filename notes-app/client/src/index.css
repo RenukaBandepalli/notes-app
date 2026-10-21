@@ -1,0 +1,136 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #f7f6fb;
+  --card: #ffffff;
+  --border: #e5e4e7;
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.1);
+  --danger: #dc2626;
+
+  font: 16px/150% system-ui, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --card: #1f2028;
+    --border: #2e303a;
+    --accent: #c084fc;
+    --accent-soft: rgba(192, 132, 252, 0.15);
+    --danger: #f87171;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; padding: 24px; }
+
+#root { max-width: 720px; margin: 0 auto; text-align: left; }
+
+h1, h2, h3 { color: var(--text-h); font-weight: 600; }
+h1 { font-size: 28px; margin: 0; }
+h2 { margin: 0; font-size: 20px; }
+h3 { margin: 0 0 6px; font-size: 18px; }
+
+/* ---------- form controls ---------- */
+input, textarea, button { font: inherit; }
+
+input[type='text'], input[type='email'], input[type='password'],
+input:not([type]), textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text-h);
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text-h);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-danger { color: var(--danger); }
+
+/* ---------- layout pieces ---------- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.note-form { display: grid; gap: 10px; }
+.form-actions { display: flex; gap: 8px; }
+.pin-label { display: flex; align-items: center; gap: 8px; }
+
+.filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filters input { flex: 1; min-width: 160px; }
+
+.error { color: var(--danger); margin: 0; }
+.empty { text-align: center; padding: 32px 0; }
+
+/* ---------- note card ---------- */
+.note-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.note-card.pinned { border-color: var(--accent); background: var(--accent-soft); }
+.note-content { white-space: pre-wrap; margin: 0 0 10px; }
+.note-meta { font-size: 13px; }
+.note-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.tag {
+  border: none;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ---------- login / register ---------- */
+.auth-form {
+  max-width: 380px;
+  margin: 60px auto;
+  display: grid;
+  gap: 12px;
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 600px) {
+  body { padding: 14px; }
+  h1 { font-size: 22px; }
+  .form-actions .btn, .note-actions .btn { flex: 1; }
+}
